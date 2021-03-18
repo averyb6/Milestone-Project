@@ -59,13 +59,13 @@ int main()
 		//If statement that will be encountered if the user enters '1'
 		if (selection == 1)
 		{
-
 			//Print the result of the user's addition problem
 			printf("The Addition result is %d\n", num1 + num2);
 			//Print new line
 			printf("\n");
 			//Print the users addition function
-			printf("Your function was %d + %d = %d\n", num1, num2);
+			printf("Your function was %d + %d\n", num1, num2);
+			//Print the user their function ID
 			printf("Function ID: %d (Addition)\n", numCalculations[1]);
 			//Print new line that will seperate the problems
 			printf("------------------------------------------------------\n");
