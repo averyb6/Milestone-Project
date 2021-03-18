@@ -39,8 +39,6 @@ int main()
 	yes = 'y';
 	while (yes == 'y' || yes == 'Y')
 	{
-		
-
 		//Prompt the user to enter their first number for the equation
 		printf("\nPlease enter a number: \n");
 		//scan for their answer to the previous question
