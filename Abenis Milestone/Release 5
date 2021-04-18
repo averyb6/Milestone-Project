@@ -1,0 +1,186 @@
+/*Avery Benis
+This project was created by myself using the Visual Studio 2019 Software
+ITT-310
+April 18, 2021
+Professor Jackson*/
+
+//Header Files
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+
+//Establishment of the structure
+struct information {
+	char creator[50];
+	char date[50];
+	char subject[100];
+	char version[50];
+};
+
+//Creation of the union "hours"
+union Hours {
+	int hrs;
+	char str[20];
+};
+
+int main()
+{
+	//Amount of text that is displayed from the file
+	char p[1000];
+	
+	//Establishing the File pointer
+	FILE* fptr;
+	//Open workbook.txt, failure will result in error
+	if ((fptr = fopen("C:\\Users\\Avery Benis\\Desktop\\workbook.txt", "r")) == NULL)
+	{
+		printf("Error");
+	}
+	else {
+		fscanf(fptr, "%[^\n]", p);
+		printf("File Message: %s\n\n", p);
+		//Close the file
+		fclose(fptr);
+	}
+
+	//Bringing the union into the main function
+	union Hours hrs;
+
+	//Bringing the structure into the main function
+	struct information creator;
+	struct information date;
+	struct information subject;
+	struct information version;
+
+	//Print statements that tie into the structure
+	strcpy(creator.creator, "Avery Benis");
+	strcpy(date.date, "Program est. 2021");
+	strcpy(subject.subject, "This program was created for the purpose of solving calculations through C programming.");
+	strcpy(version.version, "Release 3");
+
+	//int value for number 1 of the function
+	int num1;
+	//int value for number 2 of the function
+	int num2;
+	//int value for the operator selection
+	int selection;
+	//character value for the looping function
+	char yes;
+
+	//Defining the array
+	int numCalculations[4];
+	numCalculations[1] = 1;
+	numCalculations[2] = 2;
+	numCalculations[3] = 3;
+	numCalculations[4] = 4;
+
+	//Print statements that tie into the structure function
+	printf("Program Creator : %s\n", creator.creator);
+	printf("Date Program was started : %s\n", date.date);
+	printf("Subject of the Program : %s\n", subject.subject);
+	printf("Program Version : %s\n", version.version);
+
+	//Finalization of the union's ouput, it will display the number of hours put into the program.
+	hrs.hrs = 16;
+	printf("# of hours spent on this program : %d\n\n", hrs.hrs);
+
+	//User defined function
+	int introduction();
+	{
+		//Welcome the user to the program
+		printf("\n---WELCOME TO MY CALCULATOR!\n");
+		//Tell the user to enjoy their time
+		printf("\n---Enjoy the Program!\n");
+		//Prompt the user to get started
+		printf("\n---Begin your first function!\n");
+		printf("-----------------------------\n");
+
+	}
+
+	//looping function start
+	yes = 'y';
+	while (yes == 'y' || yes == 'Y')
+	{
+		//Prompt the user to enter their first number for the equation
+		printf("\nPlease enter a number: \n");
+		//scan for their answer to the previous question
+		scanf_s("%d", &num1);
+
+		//Prompt the user to enter their second number for the equation
+		printf("Enter your second number: \n");
+		//scan for their answer to the previous question
+		scanf_s("%d", &num2);
+
+		//Prompt the user to select an operator for their equation. This will also be the user's function ID
+		printf("Enter '1' for addition, '2' for subtraction, '3' for multiplication, '4' for division: \n");
+		//Scan for their selection
+		scanf_s("%d", &selection);
+
+		//If statement that will be encountered if the user enters '1'
+		if (selection == 1)
+		{
+			//Print the result of the user's addition problem
+			printf("The Addition result is %d\n", num1 + num2);
+			//Print new line
+			printf("\n");
+			//Print the users addition function
+			printf("Your function was %d + %d\n", num1, num2);
+			//Print the user their function ID
+			printf("Function ID: %d (Addition)\n", numCalculations[1]);
+			//Print new line that will seperate the problems
+			printf("------------------------------------------------------");
+		}
+		//If statement that will be encountered if the user enters '2'
+		else if (selection == 2)
+		{
+			//Print the result of the user's subtraction problem
+			printf("The Subtraction result is %d\n", num1 - num2);
+			//Print new line
+			printf("\n");
+			//Print the users subtraction function
+			printf("Your function was %d - %d\n", num1, num2);
+			//Print the user their function ID
+			printf("Function ID: %d (Subtraction)\n", numCalculations[2]);
+			//Print new line that will seperate the problems
+			printf("------------------------------------------------------");
+		}
+		//If statement that will be encountered if the user enters '3'
+		else if (selection == 3)
+		{
+			//Print the result of the user's multiplication problem
+			printf("The Multiplication result is %d\n", num1 * num2);
+			//Print new line
+			printf("\n");
+			//Print the user's multiplication function
+			printf("Your function was %d * %d \n", num1, num2);
+			//Print the user their function ID
+			printf("Function ID: %d (Multiplication)\n", numCalculations[3]);
+			//Print new line that will seperate the problems
+			printf("------------------------------------------------------");
+		}
+		//If statement that will be encountered if the user enters '4'
+		else if (selection == 4)
+		{
+			//Print the result of the user's division problem
+			printf("The Division result is %d\n", num1 / num2);
+			//Print new line
+			printf("\n");
+			//Print the users division function
+			printf("Your function was %d / %d\n", num1, num2);
+			//Print the user their function ID
+			printf("Function ID: %d (Division)\n", numCalculations[4]);
+			//Print new line that will seperate the problems
+			printf("------------------------------------------------------");
+		}
+		//Ask the user if they would like to try another function
+		printf("\nWould you like to try another function? (Y/N):\n");
+		printf("------------------------------------------------------\n");
+		//Scan for their response. Restart the loop.
+		scanf_s(" %c", &yes);
+	}
+
+	//End of the Program
+	return 0;
+}
